@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 @Entity
 @Table(name = "PRODUCT_PRICE")
@@ -18,7 +17,7 @@ public class ProductPriceEntity {
 
     @ManyToOne
     @JoinColumn(name = "BRAND_ID", nullable = false)
-    private BrandEntity brandId;
+    private BrandEntity brand;
 
     @Column(name = "START_DATE", nullable = false)
     private LocalDateTime startDate;
@@ -31,7 +30,7 @@ public class ProductPriceEntity {
 
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID", nullable = false)
-    private ProductEntity productId;
+    private ProductEntity product;
 
     @Column(name = "PRIORITY", nullable = false)
     private Long priority;
@@ -42,13 +41,16 @@ public class ProductPriceEntity {
     @Column(name = "CURR", nullable = false)
     private String curr;
 
-    public ProductPriceEntity(Long productPriceId, BrandEntity brandId, LocalDateTime startDate, LocalDateTime endDate, Long fee, ProductEntity productId, Long priority, Double price, String curr) {
+    public ProductPriceEntity() {
+    }
+
+    public ProductPriceEntity(Long productPriceId, BrandEntity brand, LocalDateTime startDate, LocalDateTime endDate, Long fee, ProductEntity product, Long priority, Double price, String curr) {
         this.productPriceId = productPriceId;
-        this.brandId = brandId;
+        this.brand = brand;
         this.startDate = startDate;
         this.endDate = endDate;
         this.fee = fee;
-        this.productId = productId;
+        this.product = product;
         this.priority = priority;
         this.price = price;
         this.curr = curr;
@@ -62,12 +64,12 @@ public class ProductPriceEntity {
         this.productPriceId = productPriceId;
     }
 
-    public BrandEntity getBrandId() {
-        return brandId;
+    public BrandEntity getBrand() {
+        return brand;
     }
 
-    public void setBrandId(BrandEntity brandId) {
-        this.brandId = brandId;
+    public void setBrand(BrandEntity brand) {
+        this.brand = brand;
     }
 
     public LocalDateTime getStartDate() {
@@ -94,12 +96,12 @@ public class ProductPriceEntity {
         this.fee = fee;
     }
 
-    public ProductEntity getProductId() {
-        return productId;
+    public ProductEntity getProduct() {
+        return product;
     }
 
-    public void setProductId(ProductEntity productId) {
-        this.productId = productId;
+    public void setProduct(ProductEntity product) {
+        this.product = product;
     }
 
     public Long getPriority() {
@@ -131,23 +133,23 @@ public class ProductPriceEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductPriceEntity that = (ProductPriceEntity) o;
-        return Objects.equals(productPriceId, that.productPriceId) && Objects.equals(brandId, that.brandId) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(fee, that.fee) && Objects.equals(productId, that.productId) && Objects.equals(priority, that.priority) && Objects.equals(price, that.price) && Objects.equals(curr, that.curr);
+        return Objects.equals(productPriceId, that.productPriceId) && Objects.equals(brand, that.brand) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(fee, that.fee) && Objects.equals(product, that.product) && Objects.equals(priority, that.priority) && Objects.equals(price, that.price) && Objects.equals(curr, that.curr);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productPriceId, brandId, startDate, endDate, fee, productId, priority, price, curr);
+        return Objects.hash(productPriceId, brand, startDate, endDate, fee, product, priority, price, curr);
     }
 
     @Override
     public String toString() {
         return "ProductPriceEntity{" +
                 "productPriceId=" + productPriceId +
-                ", brandId=" + brandId +
+                ", brand=" + brand +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", fee=" + fee +
-                ", productId=" + productId +
+                ", product=" + product +
                 ", priority=" + priority +
                 ", price=" + price +
                 ", curr='" + curr + '\'' +

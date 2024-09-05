@@ -18,6 +18,9 @@ public class BrandEntity {
     @Column(name = "NAME", nullable = false)
     private String name;
 
+    public BrandEntity() {
+    }
+
     public BrandEntity(Long brandId, String name) {
         this.brandId = brandId;
         this.name = name;

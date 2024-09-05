@@ -19,6 +19,9 @@ public class ProductEntity {
     @JoinColumn(name = "BRAND_ID", nullable = false)
     private BrandEntity brandEntity;
 
+    public ProductEntity() {
+    }
+
     public ProductEntity(Long productId, String name, BrandEntity brandEntity) {
         this.productId = productId;
         this.name = name;

@@ -15,7 +15,7 @@ public class ProductPriceEntity {
     @Column(name = "PRODUCT_PRICE_ID", nullable = false)
     private Long productPriceId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BRAND_ID", nullable = false)
     private BrandEntity brand;
 
@@ -28,7 +28,7 @@ public class ProductPriceEntity {
     @Column(name = "FEE", nullable = false)
     private Long fee;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PRODUCT_ID", nullable = false)
     private ProductEntity product;
 

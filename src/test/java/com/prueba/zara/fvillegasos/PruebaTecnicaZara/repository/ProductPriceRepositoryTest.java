@@ -1,4 +1,4 @@
-package com.prueba.zara.fvillegasos.PruebaTecnicaZara;
+package com.prueba.zara.fvillegasos.PruebaTecnicaZara.repository;
 
 import com.prueba.zara.fvillegasos.PruebaTecnicaZara.repository.ProductPriceRepository;
 import org.junit.jupiter.api.Assertions;

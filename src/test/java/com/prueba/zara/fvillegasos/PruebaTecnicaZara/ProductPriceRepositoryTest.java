@@ -17,10 +17,11 @@ class ProductPriceRepositoryTest {
     @Test
     void when_ProductId_BrandId_ApplicationDate_thenReturn_ProductPriceEntity() {
         var applicationDate = LocalDateTime.of(2020, 6, 14, 2, 0, 0);
-        var entityList = repository.findPriorityProductPriceByProductIdBrandIdAndApplicationDate(35455L, 1L, applicationDate);
+        var optEntity = repository.findPriorityProductPriceByProductIdBrandIdAndApplicationDate(35455L, 1L, applicationDate);
         Assertions.assertAll(
-                () -> Assertions.assertNotNull(entityList),
-                () -> Assertions.assertNotNull(entityList.get(0)));
+                () -> Assertions.assertNotNull(optEntity),
+                () -> Assertions.assertTrue(optEntity.isPresent()),
+                () -> Assertions.assertNotNull(optEntity.get()));
     }
 
 }

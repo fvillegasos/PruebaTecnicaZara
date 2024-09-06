@@ -1,7 +1,7 @@
 package com.prueba.zara.fvillegasos.PruebaTecnicaZara.service.impl;
 
 import com.prueba.zara.fvillegasos.PruebaTecnicaZara.exception.CustomErrorEnum;
-import com.prueba.zara.fvillegasos.PruebaTecnicaZara.exception.ExceptionHandler;
+import com.prueba.zara.fvillegasos.PruebaTecnicaZara.exception.CustomHttpException;
 import com.prueba.zara.fvillegasos.PruebaTecnicaZara.mapper.ProductPriceMapper;
 import com.prueba.zara.fvillegasos.PruebaTecnicaZara.model.ProductPriceInfo;
 import com.prueba.zara.fvillegasos.PruebaTecnicaZara.repository.ProductPriceRepository;
@@ -24,17 +24,13 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 
     @Override
     public ProductPriceInfo getProductPriceInfo(BigDecimal productId, BigDecimal brandId, OffsetDateTime applicationDate) {
-        try {
-            var optProductPrice = repository.findPriorityProductPriceByProductIdBrandIdAndApplicationDate(productId.longValue(), brandId.longValue(), applicationDate.toLocalDateTime());
+        var optProductPrice = repository.findPriorityProductPriceByProductIdBrandIdAndApplicationDate(productId.longValue(),
+                brandId.longValue(), applicationDate.toLocalDateTime());
 
-            if (optProductPrice.isEmpty()) {
-                throw ExceptionHandler.of(CustomErrorEnum.NOT_FOUND_PRODUCT_PRICE);
-            }
-
-            return mapper.fromEntityToApiDto(optProductPrice.get());
-
-        } catch (Exception exception) {
-            throw ExceptionHandler.of(CustomErrorEnum.GENERIC_INTERNAL_SERVER_ERROR);
+        if (optProductPrice.isEmpty()) {
+            throw CustomHttpException.of(CustomErrorEnum.NOT_FOUND_PRODUCT_PRICE);
         }
+
+        return mapper.fromEntityToApiDto(optProductPrice.get());
     }
 }

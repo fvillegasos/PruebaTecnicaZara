@@ -127,32 +127,4 @@ public class ProductPriceEntity {
     public void setCurr(String curr) {
         this.curr = curr;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ProductPriceEntity that = (ProductPriceEntity) o;
-        return Objects.equals(productPriceId, that.productPriceId) && Objects.equals(brand, that.brand) && Objects.equals(startDate, that.startDate) && Objects.equals(endDate, that.endDate) && Objects.equals(fee, that.fee) && Objects.equals(product, that.product) && Objects.equals(priority, that.priority) && Objects.equals(price, that.price) && Objects.equals(curr, that.curr);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(productPriceId, brand, startDate, endDate, fee, product, priority, price, curr);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductPriceEntity{" +
-                "productPriceId=" + productPriceId +
-                ", brand=" + brand +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", fee=" + fee +
-                ", product=" + product +
-                ", priority=" + priority +
-                ", price=" + price +
-                ", curr='" + curr + '\'' +
-                '}';
-    }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(CustomHttpException.class)
-    public ResponseEntity<CustomHttpError> handleException(CustomHttpException customHttpException) {
+    public ResponseEntity<CustomHttpError> handleCustomException(CustomHttpException customHttpException) {
         return getResponseEntityError(customHttpException);
     }
 

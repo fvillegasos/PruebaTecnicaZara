@@ -16,7 +16,7 @@ public interface ProductPriceMapper {
     @Mapping(target = "brandId", source = "brand.brandId")
     ProductPriceInfo fromEntityToApiDto(ProductPriceEntity source);
 
-    default OffsetDateTime fromLocalDateToOffsetDateTime(LocalDateTime localDateTime) {
+    default OffsetDateTime fromLocalDateToOffSetDateTime(LocalDateTime localDateTime) {
         final ZoneId zone = ZoneId.of("Europe/Madrid");
         var zoneOffSet = zone.getRules().getOffset(localDateTime);
         return localDateTime.atOffset(zoneOffSet);
